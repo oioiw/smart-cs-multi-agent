@@ -1,10 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import App from './App'
 import './index.css'
-import App from './App.tsx'
+import { ToastProvider } from './hooks/ToastProvider'
+import { ToastViewport } from './components/common/ToastViewport'
+import { ErrorBoundary } from './components/common/ErrorBoundary'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ErrorBoundary>
+      <ToastProvider>
+        <App />
+        <ToastViewport />
+      </ToastProvider>
+    </ErrorBoundary>
   </StrictMode>,
 )
